@@ -1,0 +1,33 @@
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="add-bank" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Add Bank</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form action="/admin/bank" method="POST" enctype="multipart/form-data" >
+                <div class="form-group">
+                  <label for="exampleFormControlInput1">Holder Name</label>
+                  <input type="text" required name="name" class="form-control" id="exampleFormControlInput1" placeholder="name">
+                  <label for="exampleFormControlInput2">Bank Name</label>
+                  <input type="text" required name="bank" class="form-control" id="exampleFormControlInput2" placeholder="bank name">
+                  <label for="exampleFormControlInput3">Account No.</label>
+                  <input type="text" required name="account" class="form-control" id="exampleFormControlInput3" placeholder="account number">
+                  <label for="exampleFormControlInput3">Image</label>
+                  <input type="file" required name="image" class="form-control" id="exampleFormControlInput3" >
+                </div>
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="submit" class="btn btn-primary">Add</button>
+              </form>
+        </div>
+        <div class="modal-footer">
+        </div>
+      </div>
+    </div>
+  </div>
