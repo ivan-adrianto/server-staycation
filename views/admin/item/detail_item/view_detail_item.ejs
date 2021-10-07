@@ -33,7 +33,7 @@
                                     </ul>
                                     <div class="tab-content" id="myTabContent">
                                         <%- include('./show_feature.ejs') %>
-                                        <%- include('./show_activity.ejs') %>
+                                            <%- include('./show_activity.ejs') %>
                                     </div>
 
                             </div>
@@ -43,7 +43,8 @@
                     <!-- End of Main Content -->
 
                     <%- include('../../../partials/footer.ejs') %>
-                    <%- include('./edit_feature.ejs') %>
+                        <%- include('./edit_feature.ejs') %>
+                            <%- include('./edit_activity.ejs') %>
 
                 </div>
                 <!-- End of Content Wrapper -->
@@ -63,14 +64,23 @@
                     $('#dataTableActivity').DataTable()
                 })
                 $("#show-feature").on('click', '.button-update', function() {
-                let id = $(this).data("id")
-                let name = $(this).data("name")
-                let qty = $(this).data("qty")
-                $(".id").val(id)
-                $(".name").val(name)
-                $(".qty").val(qty)
-                $("#edit-bank").modal("show")
-            })
+                    let id = $(this).data("id")
+                    let name = $(this).data("name")
+                    let qty = $(this).data("qty")
+                    $(".id").val(id)
+                    $(".name").val(name)
+                    $(".qty").val(qty)
+                    $("#edit-bank").modal("show")
+                })
+                $("#show-activity").on('click', '.button-update', function() {
+                    let id = $(this).data("id")
+                    let name = $(this).data("name")
+                    let type = $(this).data("type")
+                    $(".id").val(id)
+                    $(".name").val(name)
+                    $(".type").val(type)
+                    $("#edit-activity").modal("show")
+                })
             </script>
 </body>
 

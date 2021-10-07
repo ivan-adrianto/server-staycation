@@ -16,6 +16,7 @@ const activitySchema = new mongoose.Schema({
     },
     isPopular: {
         type: Boolean,
+        default: false
     },
     itemId: {
         type: ObjectId,

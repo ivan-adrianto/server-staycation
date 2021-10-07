@@ -12,7 +12,7 @@ const flash = require("connect-flash")
 
 // import mongoose
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/db_bwamern");
+mongoose.connect("mongodb://localhost:27017/db_staycation");
 
 // admin router
 const adminRouter = require("./routes/admin");
