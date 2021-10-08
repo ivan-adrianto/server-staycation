@@ -4,11 +4,61 @@ const Item = require("../models/Item");
 const Image = require("../models/Image");
 const Feature = require("../models/Feature");
 const Activity = require("../models/Activity");
+const Users = require("../models/Users");
 const fs = require("fs-extra");
 const path = require("path");
+const bcrypt = require("bcryptjs");
 
 module.exports = {
+  viewSignIn: async (req, res) => {
+    try {
+      const alertMessage = req.flash("alertMessage");
+      const alertStatus = req.flash("alertStatus");
+      const alert = { message: alertMessage, status: alertStatus };
+      console.log(`req.session.user`, req.session.user)
+      if (req.session.user === null || req.session.user === undefined) {
+        res.render("index", {
+          alert,
+          title: "Staycation - Login",
+        });
+      } else {
+        res.redirect("/admin/dashboard")
+      }
+    } catch (err) {
+      res.redirect("/admin/signin");
+    }
+  },
+  actionSignin: async (req, res) => {
+    try {
+      const { username, password } = req.body;
+      const users = await Users.findOne({ username });
+      if (!users) {
+        req.flash("alertMessage", `User tidak ditemukan}`);
+        req.flash("alertStatus", "danger");
+        res.redirect("/admin/signin");
+      }
+      const isPasswordMatch = await bcrypt.compare(password, users.password);
+      if (!isPasswordMatch) {
+        req.flash("alertMessage", `Password yg anda masukkan salah`);
+        req.flash("alertStatus", "danger");
+        res.redirect("/admin/signin");
+      } 
+      req.session.user = {
+        id: users.id,
+        username: users.username,
+      };
+      res.redirect("/admin/dashboard");
+    } catch (error) {
+      res.redirect("/admin/signin");
+    }
+  },
+  actionLogout: async(req, res) => {
+    req.session.destroy()
+    res.redirect("/admin/signin")
+  },
+
   viewDashboard: (req, res) => {
+    console.log(`req.session.user`, req.session.user)
     res.render("admin/dashboard/view_dashboard", {
       title: "Staycation - Dashboard",
     });
@@ -335,7 +385,7 @@ module.exports = {
         alert,
         itemId,
         feature,
-        activity
+        activity,
       });
     } catch (error) {
       req.flash("alertMessage", `${error.message}`);
