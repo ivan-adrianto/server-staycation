@@ -59,10 +59,13 @@ module.exports = {
     res.redirect('/admin/signin')
   },
 
-  viewDashboard: (req, res) => {
-    console.log(`req.session.user`, req.session.user)
+  viewDashboard: async(req, res) => {
+    const member = await Member.find()
+    const item = await Item.find()
     res.render('admin/dashboard/view_dashboard', {
-      title: 'Staycation - Dashboard'
+      title: 'Staycation - Dashboard',
+      member,
+      item
     })
   },
   viewCategory: async (req, res) => {
