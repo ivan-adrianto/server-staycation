@@ -12,10 +12,13 @@ const flash = require("connect-flash")
 
 // import mongoose
 const mongoose = require("mongoose");
-mongoose.connect("mongodb://localhost:27017/db_bwamern");
+mongoose.connect("mongodb+srv://ivanadrianto:ZvHt5MjNLQLXmINo@cluster0.gl7yr.mongodb.net/db-staycation?retryWrites=true&w=majority");
 
 // admin router
 const adminRouter = require("./routes/admin");
+
+// api router 
+const apiRouter = require("./routes/api")
 
 var app = express();
 
@@ -46,6 +49,7 @@ app.use(flash())
 app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/admin", adminRouter);
+app.use("/api/v1/member", apiRouter)
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

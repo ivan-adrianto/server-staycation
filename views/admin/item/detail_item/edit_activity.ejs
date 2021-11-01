@@ -1,0 +1,33 @@
+<!-- Modal -->
+<div class="modal fade" id="edit-activity" tabindex="-1" aria-labelledby="edit-modal" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="edit-bank">Update Activity</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+            </div>
+            <div class="modal-body">
+                <form action="/admin/item/update/activity?_method=PUT" method="POST" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label for="exampleFormControlInput1">Name</label>
+                        <input type="text" required name="name" class="form-control name" id="exampleFormControlInput1" placeholder="name">
+                        <label for="exampleFormControlInput2">Type</label>
+                        <input type="text" required name="type" class="form-control type" id="exampleFormControlInput3" placeholder="type">
+                        <div class="form-group">
+                            <label for="exampleFormControlInput3">Image</label>
+                            <input type="file" name="image" class="form-control" id="exampleFormControlInput3" >
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <input type="hidden" class="id" name="id">
+                        <input type="hidden" name="itemId" value="<%- itemId %>">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button type="submit" class="btn btn-primary">Edit</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

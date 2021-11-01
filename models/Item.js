@@ -7,7 +7,7 @@ const itemSchema = new mongoose.Schema({
         required: true
     },
     price: {
-        type: String,
+        type: Number,
         required: true
     },
     country: {
@@ -21,22 +21,35 @@ const itemSchema = new mongoose.Schema({
     },
     isPopular: {
         type: Boolean,
+        default: false
     },
     description: {
         type: String,
         required: true
     },
-    imageId: {
+    unit: {
+        type: String,
+        default: "night"
+    },
+    sumBooking: {
+        type: Number,
+        default: 0
+    },
+    imageId: [{
         type: ObjectId,
         ref: 'Image'
-    },
-    featureId: {
+    }],
+    featureId: [{
         type: ObjectId,
         ref: "Feature"
-    },
-    activityId: {
+    }],
+    activityId: [{
         type: ObjectId,
-        ref: "Activity"
+        ref: "Activity",
+    }],
+    categoryId: {
+        type: ObjectId,
+        ref: "Category"
     },
 })
 

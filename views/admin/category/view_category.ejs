@@ -53,8 +53,6 @@
     $("#dataTable").on('click', '.button-update', function() {
         let id = $(this).data("id")
         let name = $(this).data("name")
-        console.log(`id`, id)
-        console.log(`name`, name)
         $(".id").val(id)
         $(".name").val(name)
         $("#edit-modal").modal("show")

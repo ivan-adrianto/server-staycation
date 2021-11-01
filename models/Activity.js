@@ -1,4 +1,5 @@
 const mongoose = require('mongoose')
+const {ObjectId} = mongoose.Schema
 
 const activitySchema = new mongoose.Schema({
     name: {
@@ -15,6 +16,11 @@ const activitySchema = new mongoose.Schema({
     },
     isPopular: {
         type: Boolean,
+        default: false
+    },
+    itemId: {
+        type: ObjectId,
+        ref: "Item"
     }
 })
 
