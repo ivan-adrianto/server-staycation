@@ -12,6 +12,7 @@
                         <th>Date</th>
                         <th>Item</th>
                         <th>Member Name</th>
+                        <th>Bank Name</th>
                         <th>Status</th>
                         <th>Action</th>
                     </tr>
@@ -32,6 +33,9 @@
                             <td>
                                 <%= booking[i].memberId.firstName %>
                                     <%= booking[i].memberId.lastName %>
+                            </td>
+                            <td>
+                                <%= booking[i].bankId.nameBank %>
                             </td>
                             <td>
                                 <%= booking[i].payments.status %>
